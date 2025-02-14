@@ -1,11 +1,11 @@
 import sequelize from '../config/connection.js';
-import { FeedbackFactory } from './feedback.js';  // Import the Feedback model factory function
-import { TipFactory } from './tips.js';           // Import the Tip model factory function
+import { SymptomsFactory } from './symptoms.js';  // Import the Symptoms model factory function
+import { MedicationFactory } from './medication.js';           // Import the medications model factory function
 
-// Initialize the Tip model using the factory function and the Sequelize instance.
-const Tip = TipFactory(sequelize);
-// Initialize the Feedback model using the factory function and the Sequelize instance.
-const Feedback = FeedbackFactory(sequelize);
+// Initialize the Medications model using the factory function and the Sequelize instance.
+const Medication = MedicationFactory(sequelize);
+// Initialize the Symptoms model using the factory function and the Sequelize instance.
+const Symptoms = SymptomsFactory(sequelize);
 
 // Export the Sequelize instance and the initialized models for use in other parts of the application.
-export { Feedback, Tip };
+export { Symptoms, Medication };
