@@ -5,7 +5,8 @@ import './index.css';
 import App from './App.tsx';
 import ErrorPage from './pages/ErrorPage.tsx';
 import Home from './pages/Home.tsx';
-import Feedback from './pages/Feedback.tsx'
+import Feedback from './pages/LandingPage.tsx'
+import Signup from './pages/Signup.tsx';
 
 const router = createBrowserRouter([
   {
@@ -20,9 +21,13 @@ const router = createBrowserRouter([
       {
         path: '/feedback',
         element: <Feedback />
-      }, 
+      },
+      {
+        path: '/signup',
+        element: <Signup />
+      } 
     ]
-  }
+  },
 ])
 
 const rootElement = document.getElementById('root');

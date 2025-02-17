@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { retrieveFeedbacks } from "../api/feedbackAPI.tsx";
-import type { FeedbackData } from "../interfaces/FeedbackData";
-import FeedbackList from "../components/Feedbacks"
-import FeedbackForm from "../components/FeedbackForm";
+import type { FeedbackData } from "../interfaces/FeedbackData.tsx";
+import FeedbackList from "../components/Feedbacks.tsx"
+import FeedbackForm from "../components/FeedbackForm.tsx";
 
-const Feedback = () => {
+const LandingPage = () => {
 
     // Initialize state for 'feedbacks' using useState, setting it to an empty array of type UserData.
     const [feedbacks, setFeedbacks] = useState<FeedbackData[]>([]);
@@ -32,4 +32,4 @@ const Feedback = () => {
     );
 };
 
-export default Feedback;
+export default LandingPage;
