@@ -4,6 +4,7 @@ import type { FeedbackData } from "../interfaces/FeedbackData.tsx";
 import FeedbackList from "../components/Feedbacks.tsx"
 import FeedbackForm from "../components/FeedbackForm.tsx";
 
+
 const LandingPage = () => {
 
     // Initialize state for 'feedbacks' using useState, setting it to an empty array of type UserData.

@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button } from "@heroui/react";
 
+
 export default function Login() {
   const [action, setAction] = React.useState('');
 
@@ -28,14 +29,6 @@ export default function Login() {
         }
       }}
     >
-      <Input
-        isRequired
-        errorMessage="Please enter a valid username"
-        labelPlacement="outside"
-        name="name"
-        placeholder="Enter your username"
-        type="text"
-      />
 
       <Input
         isRequired
@@ -58,12 +51,16 @@ export default function Login() {
         <Button color="primary" type="submit">
           Login
         </Button>
+        
       </div>
       {action && (
         <div className="text-small text-default-500">
           Action: <code>{action}</code>
         </div>
+        
+        
       )}
+      
     </Form>
   );
 }

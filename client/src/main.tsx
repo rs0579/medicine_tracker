@@ -7,6 +7,7 @@ import ErrorPage from './pages/ErrorPage.tsx';
 import Home from './pages/Home.tsx';
 import Feedback from './pages/LandingPage.tsx'
 import Signup from './pages/Signup.tsx';
+import Login from './pages/Login.tsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Signup />
+      }, 
+      {
+        path: '/Login',
+        element: <Login />
       } 
     ]
   },
