@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+// import { Sequelize } from 'sequelize';
 import sequelize from '../config/connection.js';
 
 import { PatientFactory } from './patient.js';
@@ -13,9 +13,9 @@ const User = UserFactory(sequelize);
 
 
 
-    function UserFactory(_sequelize: Sequelize) {
-        throw new Error('Function not implemented.');
-    }
+    // function UserFactory(_sequelize: Sequelize) {
+    //     throw new Error('Function not implemented.');
+    // }
 
 
 

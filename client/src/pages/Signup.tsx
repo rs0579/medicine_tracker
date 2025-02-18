@@ -12,7 +12,7 @@ export default function Signup() {
         e.preventDefault();
         let data = Object.fromEntries(new FormData(e.currentTarget));
         try {
-          const response = await fetch("/api/login", {
+          const response = await fetch("/api/patient/signup", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
