@@ -1,21 +1,17 @@
 import { DataTypes, Sequelize, Model, ForeignKey } from 'sequelize';
-import { Patient } from './patient';
+import { Patient } from './patient.js';
 
 interface SymptomsAttributes {
     id: number;
     Description: string;
     StartDate: Date;
-    UserId: ForeignKey<Patient ['id']>;
 }
 
 class Symptoms extends Model<SymptomsAttributes> implements SymptomsAttributes {
     public id!: number;
-    public UserId!: ForeignKey<Patient ['id']>;
     public Description!: string;
     public StartDate!: Date;
-
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+    declare patientId: ForeignKey<Patient ['id']>
 }
 
 export function SymptomsFactory(sequelize: Sequelize): typeof Symptoms {
@@ -25,14 +21,6 @@ export function SymptomsFactory(sequelize: Sequelize): typeof Symptoms {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true,
-            },
-            UserId: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                references: {
-                    model: Patient, 
-                    key: 'id',     
-                  },
             },
             Description: {
                 type: DataTypes.STRING,

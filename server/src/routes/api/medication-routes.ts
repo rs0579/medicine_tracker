@@ -1,12 +1,14 @@
-import express, { application } from 'express';
-// import type { Request, Response } from 'express';
+import express from 'express';
+import type { Request, Response } from 'express';
 // import { Medication } from '../../models/index.js';
 
 const router = express.Router();
 //Using the user medication input, I want this information to be retrieved from 
+const app = express()
+const PORT = process.env.PORT || 3000
 
 // GET /feedback - Get all feedback
-router.get('/api/drug', async (req, res) => {
+router.get('/api/drug', async (req:Request, res:Response) => {
   try {
     const { name } = req.query
     if (!name) {
@@ -40,12 +42,12 @@ router.get('/api/drug', async (req, res) => {
     return res.status(500).json({ error: error.message })
   }
 
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`)
-  })
-
 })
-export { router as medicationRouter }
+
+app.listen(PORT, () => {
+  console.log(`✅ Server running on http://localhost:${PORT}`)
+})
+ export { router as medicationRouter }
 
 
 
