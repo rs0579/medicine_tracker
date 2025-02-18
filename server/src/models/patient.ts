@@ -5,7 +5,7 @@ interface PatientAttribute {
     name: string;
     email: string;
     password: string;
-    id: string;
+    id: number;
 }
 
 // Optional is a TypeScript utility type that makes some properties optional.
@@ -14,7 +14,7 @@ interface PatientCreationAttributes extends Optional<PatientAttribute, 'id'> { }
 
 // The Tip class extends Sequelize's Model class and implements TipAttributes to enforce the structure of tip records.
 export class Patient extends Model<PatientAttribute, PatientCreationAttributes> implements PatientAttribute {
-    public id!: string;
+    public id!: number;
     public name!: string;
     public email!: string;
     public password!: string;
