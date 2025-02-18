@@ -6,7 +6,7 @@ import express from 'express';
 const router = express.Router();
 
 // 
- router.use('/meds', medicationRouter);
+ router.use('/medication', medicationRouter);
 
 router.use('/patient', patientRouter)
 

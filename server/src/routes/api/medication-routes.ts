@@ -4,13 +4,13 @@ import type { Request, Response } from 'express';
 
 const router = express.Router();
 //Using the user medication input, I want this information to be retrieved from 
-const app = express()
-const PORT = process.env.PORT || 3000
+// const app = express()
+// const PORT = process.env.PORT || 3000
 
 // GET /feedback - Get all feedback
-router.get('/api/drug', async (req:Request, res:Response) => {
+router.post('/', async (req:Request, res:Response) => {
   try {
-    const { name } = req.query
+    const { name } = req.body //UNLESS YOU'RE PUTTING IT AFTER THE QUESTION MARK, IT IS BEST TO USE .BODY AND NOT .QUERY
     if (!name) {
       return res.status(400).json({ error: "Please provide valide medication name" })
     }
@@ -44,9 +44,9 @@ router.get('/api/drug', async (req:Request, res:Response) => {
 
 })
 
-app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`)
-})
+// app.listen(PORT, () => {
+//   console.log(`✅ Server running on http://localhost:${PORT}`)
+// })
  export { router as medicationRouter }
 
 
