@@ -15,7 +15,7 @@ export class Medication extends Model<MedicineAttributes> implements MedicineAtt
     declare delivery: string;
     declare officialName: string;
     declare petientId: ForeignKey<Patient ['id']>
-    //THIS IS HOW WE WILL DO THE FOREIGN KEY: Lesson 14.17/
+    //THIS IS HOW WE WILL DO THE FOREIGN KEY: Lesson 14.17.
 }
 export function MedicationFactory(sequelize: Sequelize): typeof Medication {
     Medication.init(

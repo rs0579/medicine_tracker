@@ -1,6 +1,6 @@
 import express from 'express';
 import type { Request, Response} from 'express';
-import { Feedback } from '../../models/index.js';
+import { Medication } from '../../models/index.js';
 
 const router = express.Router();
 
