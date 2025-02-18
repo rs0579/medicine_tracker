@@ -1,14 +1,14 @@
 import express from 'express';
 import type { Request, Response} from 'express';
-import { Feedback } from '../../models/index.js';
+import { Medication } from '../../models/index.js';
 
 const router = express.Router();
 
 // GET /feedback - Get all feedback
 router.get('/', async (_req: Request, res: Response) => {
   try {
-    const feedbacks = await Feedback.findAll();
-    res.status(200).json(feedbacks);
+    const meds = await Medication.findAll();
+    res.status(200).json(meds);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
@@ -17,9 +17,9 @@ router.get('/', async (_req: Request, res: Response) => {
 // GET /feedback/:id - Get feedback by ID
 router.get('/:id', async (req: Request, res: Response) => {
   try {
-    const feedback = await Feedback.findByPk(req.params.id);
-    if (feedback) {
-      res.status(200).json(feedback);
+    const med = await Medication.findByPk(req.params.id);
+    if (med) {
+      res.status(200).json(med);
     } else {
       res.status(404).json({ error: 'Feedback not found' });
     }
@@ -31,12 +31,12 @@ router.get('/:id', async (req: Request, res: Response) => {
 // POST /feedback - Create new feedback
 router.post('/', async (req: Request, res: Response) => {
   try {
-    const newFeedback = await Feedback.create(req.body);
-    res.status(201).json(newFeedback);
+    const newMedications = await Medication.create(req.body);
+    res.status(201).json(newMedications);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 
-export { router as feedbackRouter };
+export { router as medicationRouter };

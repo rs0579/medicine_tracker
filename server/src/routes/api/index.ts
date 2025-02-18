@@ -1,5 +1,5 @@
 import { tipRouter } from './tip-routes.js';
-import { feedbackRouter } from './feedback-routes.js';
+import { feedbackRouter } from './medication-routes.js';
 import { patientRouter } from './patient-routes.js';
 import {loginRouter} from './login-routes.js';
 import express from 'express';
