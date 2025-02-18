@@ -1,6 +1,9 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { addTip } from "../api/tipAPI";  // Import the function to add a tip from the API
 
+
+
+
 // Define the TipForm component
 const TipForm = () => {
   // State to manage the tip form data
