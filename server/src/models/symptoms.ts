@@ -1,16 +1,16 @@
 import { DataTypes, Sequelize, Model, ForeignKey } from 'sequelize';
-import { Patient } from './Patient';
+import { Patient } from './patient';
 
 interface SymptomsAttributes {
     id: number;
-    UserId: number;
     Description: string;
     StartDate: Date;
+    UserId: ForeignKey<Patient ['id']>;
 }
 
 class Symptoms extends Model<SymptomsAttributes> implements SymptomsAttributes {
     public id!: number;
-    public UserId!: ForeignKey<Patient ['id']>
+    public UserId!: ForeignKey<Patient ['id']>;
     public Description!: string;
     public StartDate!: Date;
 

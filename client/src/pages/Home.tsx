@@ -1,32 +1,10 @@
-import { useState, useEffect } from "react";
-import { retrieveTips } from "../api/tipAPI";
-import type { TipData } from "../interfaces/TipData";
-import TipList from "../components/Tips"
-import TipForm from "../components/TipForm";
 
 const Home = () => {
 
-    // Initialize state for 'tips' using useState, setting it to an empty array of type UserData.
-    const [tips, setTips] = useState<TipData[]>([]);
-
-    // useEffect hook runs once on component mount due to empty dependency array.
-    // It calls fetchTips to retrieve and set user data.
-    useEffect(() => {
-        fetchTips();
-    }, []);
-
-    // Async function fetchTips retrieves user data from an external source.
-    const fetchTips = async () => {
-        // Call retrieveTips function which asynchronously fetches user data.
-        const data = await retrieveTips();
-        // Update 'tips' state with the fetched data.
-        setTips(data);
-    }
-
     return (
         <>
-        <TipForm />
-        <TipList tips={tips} />
+        <h1>Welcome to MedTracker</h1>
+        <p>our Personalized Medication Companion. Our team of four is dedicated to making medication management effortless and informed. With MedTracker, you can log in, create a personalized list of your medications, and instantly access vital details—scientific name, delivery method, dosage form and strength, side effects, and more—powered by the FDA API. Plus, track your symptoms to stay on top of your health. Let MedTracker help you take control of your well-being with ease and confidence.</p>
         </>
         
     );
