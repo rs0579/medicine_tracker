@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 
 const router = express.Router();
 
+
 // GET /signup/ - log user in
 router.post('/signup', async (req: Request, res: Response) => {
     const {email, name, password} = req.body;
