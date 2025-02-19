@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken';
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'your_secret_key'
 
+
 // GET /signup/ - log user in
 router.post('/signup', async (req: Request, res: Response) => {
     const {email, name, password} = req.body;
