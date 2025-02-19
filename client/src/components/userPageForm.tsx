@@ -1,20 +1,21 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { addFeedback } from "../api/feedbackAPI";  // Import the function to add feedback from the API
+import { addMedication } from "../api/medicationAPI"; //the function to add feedback from the API
 
 // Define the FeedbackForm component
-const FeedbackForm = () => {
+const patientEntryForm = () => {
   // State to manage the feedback form data
-  const [feedbackData, setFeedbackData] = useState({
-    email: '',
-    feedback: ''
+  const [patientData, setPatientData] = useState({
+    medicationName: '',
+    dosage:'',
+    starterDate: ''
   });
 
   // Handle changes in the input fields
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFeedbackData({
-      ...feedbackData,
-      [name]: value
+    setPatientData({
+      ...patientData,
+      [name]: value //?? I'M NOT SURE IF THIS IS RIGHT.
     });
   };
 
@@ -23,7 +24,7 @@ const FeedbackForm = () => {
     e.preventDefault();
     try {
       // Send the feedback data to the server
-      await addFeedback(feedbackData);
+      await addMedication(patientData);
       // Reload the page to reflect the new feedback
       window.location.reload();
     } catch (err) {
@@ -71,4 +72,4 @@ const FeedbackForm = () => {
   )
 };
 
-export default FeedbackForm;
+export default patientEntryForm;
