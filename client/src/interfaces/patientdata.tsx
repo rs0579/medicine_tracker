@@ -1,5 +1,6 @@
 export interface PatientData {
-    MedicationName: string;
+    medicationName: string;
     dosage: number ;
-    starter: number;
+    startDate: number;
+    symptoms: string
   }
