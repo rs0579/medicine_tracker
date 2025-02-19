@@ -5,9 +5,9 @@ import './index.css';
 import App from './App.tsx';
 import ErrorPage from './pages/ErrorPage.tsx';
 import Home from './pages/Home.tsx';
-import Feedback from './pages/LandingPage.tsx'
 import Signup from './pages/Signup.tsx';
 import Login from './pages/Login.tsx';
+import User from './pages/User.tsx';
 
 const router = createBrowserRouter([
   {
@@ -20,17 +20,17 @@ const router = createBrowserRouter([
         element: <Home />
       }, 
       {
-        path: '/',
-        element: <Feedback />
-      },
-      {
         path: '/signup',
         element: <Signup />
-      }, 
+      },
       {
-        path: '/Login',
+        path: '/login',
         element: <Login />
-      } 
+      },
+      {
+        path: '/user',
+        element: <User />
+      }
     ]
   },
 ])

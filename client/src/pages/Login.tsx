@@ -1,9 +1,11 @@
 import React from "react";
 import { Form, Input, Button } from "@heroui/react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
   const [action, setAction] = React.useState('');
+  const navigate = useNavigate();
 
   return (
     <Form
@@ -22,7 +24,17 @@ export default function Login() {
           });
           const result = await response.json();
           console.log(result);
-          setAction(result.message || "Success");
+
+          if (response.ok) {
+            localStorage.setItem("token", result.token); // Store the token
+            setAction(result.message || "Success");
+
+            if (result.redirect) {
+              navigate(result.redirect); // Redirect to User page
+            }
+          } else {
+            setAction(result.message || "Login failed");
+          }
         } catch (error) {
           console.error("Error:", error);
           setAction("Error submitting form");
@@ -51,16 +63,16 @@ export default function Login() {
         <Button color="primary" type="submit">
           Login
         </Button>
-        
+
       </div>
       {action && (
         <div className="text-small text-default-500">
           Action: <code>{action}</code>
         </div>
-        
-        
+
+
       )}
-      
+
     </Form>
   );
 }
