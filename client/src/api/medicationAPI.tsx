@@ -11,6 +11,7 @@ const retrieveMedication = async () => {
       }
     });
     const data = await response.json();
+    console.log(data)
 
     if (!response.ok) {
       throw new Error('Invalid user API response, check network tab!');

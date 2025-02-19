@@ -44,7 +44,7 @@ const patientEntryForm = () => {
           <input
             name="medicationName"
             id="medicationName"
-            placeholder="Enter your medicine's name..."
+            placeholder="Enter your medication's name..."
             value={patientData.medicationName}
             className="form-input w-100"
             onChange={handleChange}  // Attach the change handler
@@ -53,8 +53,8 @@ const patientEntryForm = () => {
         <div className="col-12 col-lg-9">
           {/* Input field for user email */}
           <input
-            name="userDosage"
-            id="userDosage"
+            name="dosage"
+            id="dosage"
             placeholder="What dosage are you taking?"
             value={patientData.dosage}
             className="form-input w-100"
@@ -64,9 +64,9 @@ const patientEntryForm = () => {
         <div className="col-12 col-lg-9">
           {/* Input field for user email */}
           <input
-            name="starterDate"
-            id="starterDate"
-            placeholder="When did you start taking this this medicine?"
+            name="startDate"
+            id="startDate"
+            placeholder="When did you start taking this this medication?"
             value={patientData.startDate}
             className="form-input w-100"
             onChange={handleChange}  // Attach the change handler

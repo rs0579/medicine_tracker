@@ -9,19 +9,19 @@ router.post('/', async (req:Request, res:Response) => {
   try {
     const { name } = req.body //UNLESS YOU'RE PUTTING IT AFTER THE QUESTION MARK, IT IS BEST TO USE .BODY AND NOT .QUERY
     if (!name) {
-      return res.status(400).json({ error: "Please provide valide medication name" })
+      res.status(400).json({ error: "Please provide valide medication name" })
     }
     const apiUrl = `https://api.fda.gov/drug/ndc.json?search=brand_name:${name}&limit=1`
     const response = await fetch(apiUrl)
 
     if (!response.ok) {
       throw new Error(`OpenFDA API Error: ${response.statusText}`)
-      return
+      
     }
     const data = await response.json()
 
     if (!data.results || data.results.length === 0) {
-      return res.status(404).json({ error: 'No data found for this medication.' })
+      res.status(404).json({ error: 'No data found for this medication.' })
     }
 
     const medicationInfo = data.results[0]
@@ -33,10 +33,10 @@ router.post('/', async (req:Request, res:Response) => {
       dosage_form: medicationInfo.dosage_form || 'N/A',
       route: medicationInfo.route || 'N/A'
     }
-    return res.json(result)
+    res.json(result)
   }
   catch (error: any) {
-    return res.status(500).json({ error: error.message })
+    res.status(500).json({ error: error.message })
   }
 
 })
