@@ -1,8 +1,7 @@
 import { Outlet, Route } from 'react-router-dom';
 import {HeroUIProvider} from "@heroui/react";
 import Navbar from './components/Navbar';
-// import Login from './pages/Login';
-// import Signup from './pages/Signup';
+
 import './index.css'
 function App() {
 
@@ -15,8 +14,7 @@ function App() {
 
         </main>
       </HeroUIProvider>
-      {/* <Route path="/User" element={<Login />} />
-      <Route path="/User" element={<Signup />} /> */}
+
             
     </div>
     
