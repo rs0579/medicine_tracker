@@ -13,7 +13,7 @@ export default function Login() {
         e.preventDefault();
         let data = Object.fromEntries(new FormData(e.currentTarget));
         try {
-          const response = await fetch("/api/patient", {
+          const response = await fetch("/api/patient/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
