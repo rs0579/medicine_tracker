@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         element: <Home />
       }, 
       {
-        path: '/feedback',
+        path: '/',
         element: <Feedback />
       },
       {
