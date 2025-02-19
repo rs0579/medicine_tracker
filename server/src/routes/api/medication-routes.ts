@@ -1,11 +1,8 @@
 import express from 'express';
 import type { Request, Response } from 'express';
-// import { Medication } from '../../models/index.js';
 
 const router = express.Router();
-//Using the user medication input, I want this information to be retrieved from 
-// const app = express()
-// const PORT = process.env.PORT || 3000
+//Using the user medication input, I want this information to be retrieved from the API
 
 // GET /feedback - Get all feedback
 router.post('/', async (req:Request, res:Response) => {
@@ -32,7 +29,7 @@ router.post('/', async (req:Request, res:Response) => {
     const result = {
       name: medicationInfo.brand_name || 'N/A',
       generic_name: medicationInfo.generic_name || 'N/A',
-      strength: medicationInfo.strength || 'N/A',
+      strength: medicationInfo.active_ingredients[0].strength || 'N/A', //THERE IS A STRENGTH CATEGORY IN THE RETRIEVED DATA BUT IN INSOMNIA IT SAYS N/A.
       dosage_form: medicationInfo.dosage_form || 'N/A',
       route: medicationInfo.route || 'N/A'
     }
@@ -44,9 +41,6 @@ router.post('/', async (req:Request, res:Response) => {
 
 })
 
-// app.listen(PORT, () => {
-//   console.log(`✅ Server running on http://localhost:${PORT}`)
-// })
  export { router as medicationRouter }
 
 
