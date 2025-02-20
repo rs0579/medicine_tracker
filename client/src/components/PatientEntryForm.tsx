@@ -2,12 +2,12 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import { addMedication } from "../api/medicationAPI"; //the function to add feedback from the API
 
 // Define the FeedbackForm component
-const patientEntryForm = () => {
+const PatientEntryForm = () => {
   // State to manage the feedback form data
   const [patientData, setPatientData] = useState({
     medicationName: '',
-    dosage: 0, //??
-    startDate: 0,//???
+    dosage: 0,
+    startDate: 0,
     symptoms: ''
   });
 
@@ -95,4 +95,4 @@ const patientEntryForm = () => {
   )
 };
 
-export default patientEntryForm;
+export default PatientEntryForm;
