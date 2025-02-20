@@ -6,8 +6,8 @@ const PatientEntryForm = () => {
   // State to manage the feedback form data
   const [patientData, setPatientData] = useState({
     medicationName: '',
-    dosage: 0,
-    startDate: 0,
+    dosage: '',
+    startDate: '',
     symptoms: ''
   });
 
@@ -41,39 +41,39 @@ const PatientEntryForm = () => {
         onSubmit={handleSubmit}  // Attach the submit handler
       >
         <div className="col-12 col-lg-9">
+          <p>Enter your medication's name</p>
           <input
             name="medicationName"
             id="medicationName"
-            placeholder="Enter your medication's name..."
+            placeholder="name"
             value={patientData.medicationName}
             className="form-input w-100"
             onChange={handleChange}  // Attach the change handler
           />
         </div>
         <div className="col-12 col-lg-9">
-          {/* Input field for user email */}
+          <p>What dosage are you taking?</p>
           <input
             name="dosage"
             id="dosage"
-            placeholder="What dosage are you taking?"
+            placeholder="25mg"
             value={patientData.dosage}
             className="form-input w-100"
             onChange={handleChange}  // Attach the change handler
           />
         </div>
         <div className="col-12 col-lg-9">
-          {/* Input field for user email */}
+          <p>When did you start taking this this medication?</p>
           <input
             name="startDate"
             id="startDate"
-            placeholder="When did you start taking this this medication?"
+            placeholder="mm/dd/year"
             value={patientData.startDate}
             className="form-input w-100"
             onChange={handleChange}  // Attach the change handler
           />
         </div>
         <div className="col-12">
-          {/* Textarea for user feedback */}
           <p>Please list the symptoms you're experiencing that this medication is supposed to address:</p>
           <textarea
             name="symptoms"
@@ -86,7 +86,7 @@ const PatientEntryForm = () => {
         <div className="col-12 col-lg-3">
           {/* Submit button for the feedback form */}
           <button className="btn btn-primary btn-block py-3" type="submit">
-            Add Feedback
+            Search
           </button>
         </div>
       </form>
