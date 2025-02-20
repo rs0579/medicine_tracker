@@ -50,8 +50,7 @@ router.post('/login', async (req: Request, res: Response) => {
       // You can implement a JWT token or session here
       // For now, let's assume success
       const token = jwt.sign({ id: patient.id, email: patient.email }, JWT_SECRET, { expiresIn: '1h' });
-      // return res.status(200).json({ message: 'Login successful', token });
-      return res.status(200).json({ message: 'Login successful', token, redirect: '/User' });
+      return res.status(200).json({ message: 'Login successful', token,redirect: '/User'});
 
     } catch (err) {
       console.error(`Login Error:`); 

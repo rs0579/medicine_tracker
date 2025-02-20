@@ -3,7 +3,7 @@ import { Form, Input, Button } from "@heroui/react";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const [action, setAction] = React.useState("");
+  const [action, setAction] = React.useState('');
   const navigate = useNavigate();
 
   return (
@@ -13,7 +13,6 @@ export default function Signup() {
       onSubmit={async (e) => {
         e.preventDefault();
         let data = Object.fromEntries(new FormData(e.currentTarget));
-
         try {
           const response = await fetch("/api/patient/signup", {
             method: "POST",
@@ -22,17 +21,16 @@ export default function Signup() {
             },
             body: JSON.stringify(data),
           });
-
           const result = await response.json();
           console.log(result);
-
           if (response.ok) {
             localStorage.setItem("token", result.token); // Store the token
-            setAction(result.message || "Success");
 
-            navigate("/User"); // Redirect to User page immediately after signup
+            if (result.redirect) {
+              navigate(result.redirect); // Redirect to User page
+            }
           } else {
-            setAction(result.message || "Signup failed");
+            setAction(result.message || "Login failed");
           }
         } catch (error) {
           console.error("Error:", error);
@@ -66,13 +64,11 @@ export default function Signup() {
         placeholder="Enter your password"
         type="password"
       />
-      
       <div className="flex gap-2">
         <Button color="primary" type="submit">
           Signup
         </Button>
       </div>
-
       {action && (
         <div className="text-small text-default-500">
           Action: <code>{action}</code>

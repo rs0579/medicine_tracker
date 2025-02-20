@@ -1,17 +1,19 @@
-import { DataTypes, Sequelize, Model, ForeignKey } from 'sequelize';
+import { DataTypes, Sequelize, Model, ForeignKey, Optional } from 'sequelize';
 import { Patient } from './patient';
+
 
 // This Medications model is responsible for managing the database interaction for the 'medication' table in PostgreSQL
 interface MedicineAttributes {
     id: number;
-    strength: number;
+    strength: string;
     dosageForm: string;
     delivery: string;
     officialName: string;
 }
-export class Medication extends Model<MedicineAttributes> implements MedicineAttributes {
-    declare id: number;
-    declare strength: number;
+interface MedicineCreateAttributes extends Optional<MedicineAttributes, 'id'> {}
+export class Medication extends Model<MedicineAttributes, MedicineCreateAttributes> implements MedicineAttributes {
+    public id!: number;
+    declare strength: string;
     declare dosageForm: string;
     declare delivery: string;
     declare officialName: string;
@@ -27,7 +29,7 @@ export function MedicationFactory(sequelize: Sequelize): typeof Medication {
                 primaryKey: true,     // Primary key for the Tip table.
             },
             strength: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 allowNull: false,     // Username field cannot be null.
             },
             dosageForm: {
@@ -44,10 +46,11 @@ export function MedicationFactory(sequelize: Sequelize): typeof Medication {
             },
         },
         {
+            tableName: 'medication',
             sequelize,
             timestamps: false,
             underscored: true,
-            modelName: 'medication'
+            
 
         }
     );

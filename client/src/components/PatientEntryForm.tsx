@@ -1,5 +1,6 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { addMedication } from "../api/medicationAPI"; //the function to add feedback from the API
+import './dashbord.css'
 
 // Define the FeedbackForm component
 const PatientEntryForm = () => {
@@ -27,7 +28,7 @@ const PatientEntryForm = () => {
       // Send the USER MEDICATION data to the server
       await addMedication(patientData);
       // Reload the page to reflect the new USER MEDICATION
-      window.location.reload();
+      // window.location.reload();
     } catch (err) {
       console.error('Failed to add medication input', err);  // Log any errors that occur
     }
