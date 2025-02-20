@@ -1,4 +1,4 @@
-import { Outlet, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import {HeroUIProvider} from "@heroui/react";
 import Navbar from './components/Navbar';
 // import Login from './pages/Login';

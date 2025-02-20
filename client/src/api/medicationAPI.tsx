@@ -1,4 +1,4 @@
-import { PatientData } from "../interfaces/PatientData"
+import { PatientData } from "../interfaces/patientdata"
 
  // This function sends a GET request to the '/api/medication' endpoint to fetch
  // feedback data. It handles errors by logging them to the console and returns
