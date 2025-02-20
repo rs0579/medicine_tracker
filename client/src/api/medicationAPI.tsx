@@ -1,58 +1,56 @@
-import { PatientData } from "../interfaces/PatientData"
+import { PatientData } from "../interfaces/patientdata";
 
- // This function sends a GET request to the '/api/medication' endpoint to fetch
- // feedback data. It handles errors by logging them to the console and returns
- // an empty array if an error occurs.
+// Function to retrieve medication data
 const retrieveMedication = async () => {
   try {
     const response = await fetch('/api/medication', {
-      headers: {
-        'Content-Type': 'application/json',
-      }
+      headers: { 'Content-Type': 'application/json' },
     });
-    const data = await response.json();
-    console.log(data)
 
     if (!response.ok) {
-      throw new Error('Invalid user API response, check network tab!');
+      throw new Error(`Invalid API response: ${response.status} ${response.statusText}`);
     }
 
-    return data;
-
-  } catch (err) { 
-    console.log('Error from data retrieval:', err);
-    return [];
-  }
-}
-
-
- // This function sends a POST request to the '/api/medication/' endpoint with the
- // feedback data provided in the body. It handles errors by logging them to the
- // console and returns a rejected promise if an error occurs.
-
-const addMedication = async (body: PatientData) => {
-  try {
-    const response = await fetch(
-      '/api/medication/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body)
-      }
-    )
     const data = await response.json();
+    console.log("API Response:", data);
 
-    if (!response.ok) {
-      throw new Error('Invalid API response, check network tab!');
+    if (!Array.isArray(data)) {
+      console.error("Expected an array but received:", data);
+      return [];
     }
 
     return data;
 
   } catch (err) {
-    console.log('Error from Feedback Creation: ', err);
-    return Promise.reject('Could not create feedback');
+    console.log('Error from data retrieval:', err);
+    return [];
   }
-}
+};
+
+
+// Function to add medication data
+const addMedication = async (body: PatientData) => {
+  try {
+    const response = await fetch('/api/medication', { // Removed trailing slash
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data?.error || 'Invalid API response, check network tab!');
+    }
+
+    return data;
+
+  } catch (err) {
+    console.log('Error from Medication Creation:', err);
+    return Promise.reject(err);
+  }
+};
 
 export { retrieveMedication, addMedication };

@@ -1,7 +1,6 @@
-import { Outlet, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import {HeroUIProvider} from "@heroui/react";
 import Navbar from './components/Navbar';
-
 import './index.css'
 function App() {
 
@@ -11,13 +10,9 @@ function App() {
         <Navbar />
         <main className="container container-fluid mt-5">
           <Outlet />
-
         </main>
       </HeroUIProvider>
-
-            
     </div>
-    
   )
 }
 

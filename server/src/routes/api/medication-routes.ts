@@ -1,17 +1,27 @@
 import express from 'express';
 import type { Request, Response } from 'express';
+import { Medication } from '../../models/index.js';
 
 const router = express.Router();
 //Using the user medication input, I want this information to be retrieved from the API
+router.get('/', async (_req:Request, res:Response) => {
+  try {
+    res.json([])
+  } catch (error : any) {
+    res.status(500).json({ error: error.message })
+  }
+})
+
 
 // GET /feedback - Get all feedback
 router.post('/', async (req:Request, res:Response) => {
   try {
-    const { name } = req.body //UNLESS YOU'RE PUTTING IT AFTER THE QUESTION MARK, IT IS BEST TO USE .BODY AND NOT .QUERY
-    if (!name) {
+    console.log(req.body)
+    const { medicationName } = req.body //UNLESS YOU'RE PUTTING IT AFTER THE QUESTION MARK, IT IS BEST TO USE .BODY AND NOT .QUERY
+    if (!medicationName) {
       res.status(400).json({ error: "Please provide valide medication name" })
     }
-    const apiUrl = `https://api.fda.gov/drug/ndc.json?search=brand_name:${name}&limit=1`
+    const apiUrl = `https://api.fda.gov/drug/ndc.json?search=brand_name:${medicationName}&limit=1`
     const response = await fetch(apiUrl)
 
     if (!response.ok) {
@@ -25,15 +35,21 @@ router.post('/', async (req:Request, res:Response) => {
     }
 
     const medicationInfo = data.results[0]
+console.log(medicationInfo);
 
+   
     const result = {
-      name: medicationInfo.brand_name || 'N/A',
-      generic_name: medicationInfo.generic_name || 'N/A',
+      // name: medicationInfo.brand_name || 'N/A',
+      officialName: medicationInfo.generic_name || 'N/A',
       strength: medicationInfo.active_ingredients[0].strength || 'N/A', //THERE IS A STRENGTH CATEGORY IN THE RETRIEVED DATA BUT IN INSOMNIA IT SAYS N/A.
-      dosage_form: medicationInfo.dosage_form || 'N/A',
-      route: medicationInfo.route || 'N/A'
+      dosageForm: medicationInfo.dosage_form || 'N/A',
+      // delivery: medicationInfo.route || 'N/A'
+      delivery: 'N/A' 
     }
-    res.json(result)
+    const medication = await Medication.create (
+      result
+    )
+    res.json(medication)
   }
   catch (error: any) {
     res.status(500).json({ error: error.message })
